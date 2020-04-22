@@ -25,4 +25,9 @@
 
 .loadMoreBtn {
     margin: 1em 0 3em 0;
+    transition: box-shadow 0.2s ease-out;
+}
+
+.loadMoreBtn:hover {
+    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.1);
 }
