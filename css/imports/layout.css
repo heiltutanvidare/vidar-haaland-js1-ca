@@ -20,7 +20,12 @@ footer {
     text-align: center;
     color: var(--footer) !important;
     font-size: 12px;
-    padding: 1em 0;
+    padding: 2em 0;
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.75em;
 }
 
 h1 {
