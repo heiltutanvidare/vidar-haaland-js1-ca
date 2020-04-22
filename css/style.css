@@ -5,3 +5,24 @@
 @import "imports/card.css";
 @import "imports/details.css";
 @import "imports/form.css";
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+    gap: 1em;
+}
+
+.genderImage {
+    height: 13px;
+    transform: translateY(-0.75px);
+}
+
+.btn {
+    display: block;
+    margin-top: 1em;
+}
+
+.loadMoreBtn {
+    margin: 1em 0 3em 0;
+}
