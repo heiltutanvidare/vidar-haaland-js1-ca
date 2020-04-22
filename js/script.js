@@ -34,14 +34,22 @@ function displayCharacters(json) {
     const imgUrukHai = "urukHai.jpg";
     const imgOther = "other.jpg"; // image to use on less common races
 
-    // I have chosen to only display 100 characters,
-    // as the full list would display 933 entries
+    // I have chosen to only display 10 characters,
+    // and added a button to load more entries.
 
-    for (i = 0; i < characters.length; i++) {
+    for (i = 0; i <= numberOfEntries; i++) {
+        // Here I am checking if the race property has a value,
+        // if it does not, I set it to a string value of "Unknown"
+        if (characters[i].race) {
+            race = characters[i].race;
+        } else {
+            race = "Unknown";
+        }
+
         // Here I am seting the image variable to
         // the corresponding image for each main race
         let image = "";
-        switch (characters[i].race) {
+        switch (race) {
             case "Human":
                 image = imgHuman;
                 break;
@@ -55,9 +63,11 @@ function displayCharacters(json) {
                 image = imgHobbit;
                 break;
             case "Orc":
+            case "Orcs":
                 image = imgOrc;
                 break;
-            case "Uruk-Hai":
+            case "Black Uruk":
+            case "Uruk-hai":
                 image = imgUrukHai;
                 break;
             default:
@@ -66,10 +76,20 @@ function displayCharacters(json) {
 
         // Here I am checking if the gender property has a value,
         // if it does not, I set it to a string value of "Unknown"
-        if (characters[i].gender) {
+        if (characters[i].gender === "Male") {
             gender = characters[i].gender;
+            genderImg = "img/male.png";
+        } else if (characters[i].gender === "Female") {
+            gender = characters[i].gender;
+            genderImg = "img/female.png";
         } else {
             gender = "Unknown";
+            genderImg = "";
+        }
+
+        // Remove etries containing "user:" in the name string
+        if (characters[i].name.includes("User:")) {
+            continue;
         }
 
         // Here I am creating the HTML for each character card
@@ -82,9 +102,9 @@ function displayCharacters(json) {
                     />
                     <div class="details">
                         <h4 class="name">${characters[i].name}</h4>
-                        <p><b>Race:</b> ${characters[i].race}</p>
-                        <p><b>Gender:</b> ${gender}</p>
-                        <a class="btn btn-primary" href="details.html?id=">Details</a>
+                        <p><b>Race:</b> ${race}</p>
+                        <p><b>Gender:</b> ${gender} <img class="genderImage" src="${genderImg}"</p>
+                        <a class="btn btn-primary" href="details.html?id=${characters[i]._id}">Details</a>
                     </div>
                 </div>
         `;
@@ -93,3 +113,12 @@ function displayCharacters(json) {
     // Here I am applying the HTML to the container
     resultsContainer.innerHTML = html;
 }
+
+// I have added a button to load more entries.
+// The numberOfEntries variable is also passed to the for loop
+const loadMoreBtn = document.querySelector(".loadMoreBtn");
+let numberOfEntries = 10;
+loadMoreBtn.addEventListener("click", function () {
+    numberOfEntries += 10;
+    fetchCharacters();
+});
