@@ -31,3 +31,16 @@
 .loadMoreBtn:hover {
     box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.1);
 }
+
+.details-image {
+    max-width: 375px;
+}
+
+/* .wiki-link {
+    display: block;
+    width: auto;
+    padding: 0.5em 1em;
+    margin-top: 0.5em;
+    border: 0.5px solid;
+    border-color: var(--primary-colour);
+} */

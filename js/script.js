@@ -59,13 +59,13 @@ function displayCharacters(json) {
                 <div class="card">
                     <img
                         class="image"
-                        src="img/${image}"
+                        src="${image}"
                         alt="Title/Name"
                     />
                     <div class="details">
                         <h4 class="name">${characters[i].name}</h4>
                         <p><b>Race:</b> ${race}</p>
-                        <p><b>Gender:</b> ${gender} <img class="genderImage" src="${genderImage}"</p>
+                        <p><b>Gender:</b> ${gender} <img class="genderImage" src="${genderImage}"></p>
                         <a class="btn btn-primary" href="details.html?id=${characters[i]._id}">Details</a>
                     </div>
                 </div>
@@ -74,76 +74,6 @@ function displayCharacters(json) {
 
     // Here I am applying the HTML to the container
     resultsContainer.innerHTML = html;
-}
-
-// Here I am checking if the gender property has a value,
-// if it does not, I set it to a string value of "Unknown"
-function setGender(gender) {
-    if (gender === "Male") {
-        return "Male";
-    } else if (gender === "Female") {
-        return "Female";
-    } else {
-        return "Unknown";
-    }
-}
-
-// Here I am checking if the gender property
-// has a value, and sets the right symbol
-function setGenderImage(gender) {
-    if (gender === "Male") {
-        return "img/male.png";
-    } else if (gender === "Female") {
-        return "img/female.png";
-    } else {
-        return "";
-    }
-}
-
-function setCharacterRace(race) {
-    if (race) {
-        return race;
-    } else {
-        return "Unknown";
-    }
-}
-
-// This function sets a fitting image
-// depending on what race the character is
-function setRaceImage(race) {
-    // images for known races
-    const imgHuman = "human.jpg";
-    const imgElf = "elf.jpg";
-    const imgDwarf = "dwarf.jpg";
-    const imgHobbit = "hobbit.jpg";
-    const imgOrc = "orc.jpg";
-    const imgUrukHai = "urukHai.jpg";
-    const imgOther = "other.jpg"; // image to use on less common races
-
-    switch (race) {
-        case "Human":
-            return imgHuman;
-            break;
-        case "Elf":
-            return imgElf;
-            break;
-        case "Dwarf":
-            return imgDwarf;
-            break;
-        case "Hobbit":
-            return imgHobbit;
-            break;
-        case "Orc":
-        case "Orcs":
-            return imgOrc;
-            break;
-        case "Black Uruk":
-        case "Uruk-hai":
-            return imgUrukHai;
-            break;
-        default:
-            return imgOther;
-    }
 }
 
 // I have added a button to load more entries.

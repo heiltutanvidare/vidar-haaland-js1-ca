@@ -31,14 +31,36 @@ fetchCharacterDetails();
 function displayCharacterDetails(character) {
     const container = document.querySelector(".detail-container");
 
+    // Here I am checking if the race property has a value,
+    // if it does not, I set it to a string value of "Unknown"
+    // Using a function for reusability
+    const race = setCharacterRace(character.race);
+
+    // Here I am setting the image variable to
+    // the corresponding image for each main race
+    // Using a function for reusability
+    const image = setRaceImage(character.race);
+
+    // Here I am setting the gender variable to the
+    // corresponding value for each gender, and unknown when not specified
+    // Using a function for reusability on details page
+    const gender = setGender(character.gender);
+
+    // Here I am seting the genderImage variable to
+    // the corresponding image for each main race
+    // Using a function for reusability
+    const genderImage = setGenderImage(character.gender);
+
+    const realm = setRealm(character.realm);
+
     container.innerHTML = `
-        <img class="details-image" src="https://via.placeholder.com/250" alt="Title/Name" />
+        <img class="details-image" src="${image}" alt="${character.race}"/>
         <div class="detail-details">
             <h1>${character.name}</h1>
             <p><b>Race:</b> ${character.race}</p>
-            <p><b>Gender:</b> ${character.gender} <img class="genderImage" src=""</p>
-            <p>Property: <span class="value" id="propertyName">Property value</span></p>
-            <p>Property: <span class="value" id="propertyName">Property value</span></p>
+            <p><b>Gender:</b> ${character.gender} <img class="genderImage" src="${genderImage}"></p>
+            <p><b>Realm:</b> ${realm}</p>
+            <p>Read more about <b>${character.name}</b><br> on the <a href="${character.wikiUrl}" target="_blank">LOTR-Wikipedia</a></p>
         </div>
     `;
 }
