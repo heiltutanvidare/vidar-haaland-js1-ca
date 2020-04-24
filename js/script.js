@@ -13,6 +13,7 @@ async function fetchCharacters() {
         displayCharacters(json);
     } catch (error) {
         console.log(error);
+        // Display error message if fetching data fails
         const errorMessage =
             "Could not get the data for you at this time. We apologize for the inconvenience";
         const errorContainer = document.createElement("div");
@@ -20,6 +21,7 @@ async function fetchCharacters() {
         errorContainer.classList.add("errorMessage");
         errorContainer.innerText = errorMessage;
     } finally {
+        // Remove loader when the fetchCharacters function is done running
         const loader = document.querySelector(".loader");
         loader.style.display = "none";
     }
@@ -29,7 +31,7 @@ fetchCharacters();
 function displayCharacters(json) {
     const characters = json.docs;
 
-    let html = "";
+    let charactersHtml = "";
 
     // I have chosen to not display all characters at once,
     // and added a button to load more entries.
@@ -61,7 +63,7 @@ function displayCharacters(json) {
         let genderImage = setGenderImage(characters[i].gender);
 
         // Here I am creating the HTML for each character card
-        html += `
+        charactersHtml += `
                 <div class="card">
                     <img
                         class="image"
@@ -79,11 +81,12 @@ function displayCharacters(json) {
     }
 
     // Here I am applying the HTML to the container
-    resultsContainer.innerHTML = html;
+    resultsContainer.innerHTML = charactersHtml;
 }
 
 // I have added a button to load more entries.
-// The numberOfEntries variable is also passed to the for loop
+// The numberOfEntries variable is also passed to the for loop in
+// the displayCharacters function to controll how many characters is shown
 const loadMoreBtn = document.querySelector(".loadMoreBtn");
 let numberOfEntries = 30;
 loadMoreBtn.innerText = `Load ${numberOfEntries} more characters`;
