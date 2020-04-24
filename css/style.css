@@ -34,6 +34,7 @@
 
 .details-image {
     max-width: 375px;
+    align-self: center;
 }
 
 .errorMessage {
