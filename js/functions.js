@@ -24,6 +24,8 @@ function setGenderImage(gender) {
     }
 }
 
+// Here I am checking if the race property has a value,
+// if it does not, I set it to a string value of "Unknown"
 function setCharacterRace(race) {
     if (race) {
         return race;
@@ -70,6 +72,8 @@ function setRaceImage(race) {
     }
 }
 
+// Here I am checking if the realm property has a value,
+// if it does not, I set it to a string value of "Not known at this time"
 function setRealm(realm) {
     if (realm) {
         return realm;
