@@ -1,8 +1,12 @@
 const submitMessage = document.querySelector(".formSubmitted");
 const contactForm = document.querySelector("#contactForm");
+
+// Call the validateForm function when user clicks the submit button
 contactForm.addEventListener("submit", validateForm);
 
+// Function to validate all the fields in the form
 function validateForm(event) {
+    // Prevent the browser from reloading the page when the form is submitted
     event.preventDefault();
 
     // Validate that the name has a value
