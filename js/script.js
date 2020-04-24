@@ -1,5 +1,6 @@
 const url = "https://the-one-api.herokuapp.com/v1/character";
 const bearerToken = "gqIh55hLaT6jfYs9J8x6";
+const resultsContainer = document.querySelector(".results");
 
 async function fetchCharacters() {
     try {
@@ -9,10 +10,15 @@ async function fetchCharacters() {
             },
         });
         const json = await response.json();
-        console.log(json);
         displayCharacters(json);
     } catch (error) {
         console.log(error);
+        const errorMessage =
+            "Could not get the data for you at this time. We apologize for the inconvenience";
+        const errorContainer = document.createElement("div");
+        resultsContainer.appendChild(errorContainer);
+        errorContainer.classList.add("errorMessage");
+        errorContainer.innerText = errorMessage;
     } finally {
         const loader = document.querySelector(".loader");
         loader.style.display = "none";
@@ -22,7 +28,7 @@ fetchCharacters();
 
 function displayCharacters(json) {
     const characters = json.docs;
-    const resultsContainer = document.querySelector(".results");
+
     let html = "";
 
     // I have chosen to not display all characters at once,
