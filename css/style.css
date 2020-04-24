@@ -40,3 +40,9 @@
     font-weight: bolder;
     color: red;
 }
+
+.formSubmitted {
+    color: green;
+    font-weight: bold;
+    display: none;
+}
